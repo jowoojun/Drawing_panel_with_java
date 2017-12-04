@@ -30,4 +30,6 @@ public class GEConstants {
 	
 	public static final Color FOREGROUND_COLOR = Color.BLACK;
 	public static final Color BACKGROUND_COLOR = Color.white;
+	public static enum EState {Idle, TwoPointsDrawing, NPointsDrawing}
+	
 }

@@ -1,5 +1,6 @@
 package frames;
 
+import java.awt.Polygon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +11,7 @@ import javax.swing.JToolBar;
 
 import Shapes.GEEllipse;
 import Shapes.GELine;
+import Shapes.GEPolygon;
 import Shapes.GERectangle;
 import constants.GEConstants;
 import constants.GEConstants.EToolBarButtons;
@@ -53,6 +55,8 @@ public class GEToolBar extends JToolBar {
 				drawingPanel.setCurrentShape(new GEEllipse());
 			else if(rbutton.getActionCommand().equals(EToolBarButtons.Line.name()))
 				drawingPanel.setCurrentShape(new GELine());
+			else if(rbutton.getActionCommand().equals(EToolBarButtons.Polygon.name()))
+				drawingPanel.setCurrentShape(new GEPolygon());
 		}
 	}
 }
