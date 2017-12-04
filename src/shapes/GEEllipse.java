@@ -16,4 +16,9 @@ public class GEEllipse extends GEShape{
 		Ellipse2D ellipse = (Ellipse2D)myshape;
 		ellipse.setFrame(startP.x, startP.y, currentP.x - startP.x, currentP.y - startP.y);
 	}
+	
+	@Override
+	public GEShape clone(){
+		return new GEEllipse();
+	}
 }
