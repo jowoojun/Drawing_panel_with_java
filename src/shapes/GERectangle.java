@@ -1,14 +1,11 @@
-package shapes;
+package Shapes;
 
 import java.awt.Point;
 import java.awt.Rectangle;
 
-public class GERectangle {
-	private Rectangle rectangle;
-	private Point startP;
-	
+public class GERectangle extends GEShape{
 	public GERectangle(){
-		rectangle = new Rectangle();
+		super(new Rectangle());
 	}
 	
 	public void initDraw(Point startP){
@@ -16,10 +13,7 @@ public class GERectangle {
 	}
 	
 	public void setCoordinate(Point currentP){
+		Rectangle rectangle = (Rectangle)myshape;
 		rectangle.setBounds(startP.x, startP.y, currentP.x - startP.x, currentP.y - startP.y);
-	}
-
-	public Rectangle getRectangle() {
-		return rectangle;
 	}
 }

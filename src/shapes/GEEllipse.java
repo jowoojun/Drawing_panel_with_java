@@ -1,14 +1,11 @@
-package shapes;
+package Shapes;
 
 import java.awt.Point;
 import java.awt.geom.Ellipse2D;
 
-public class GEEllipse {
-	private Point startP;
-	private Ellipse2D ellipse;
-	
+public class GEEllipse extends GEShape{
 	public GEEllipse(){
-		ellipse = new Ellipse2D.Double();
+		super(new Ellipse2D.Double());
 	}
 	
 	public void initDraw(Point startP){
@@ -16,10 +13,7 @@ public class GEEllipse {
 	}
 	
 	public void setCoordinate(Point currentP){
+		Ellipse2D ellipse = (Ellipse2D)myshape;
 		ellipse.setFrame(startP.x, startP.y, currentP.x - startP.x, currentP.y - startP.y);
-	}
-	
-	public Ellipse2D getEllipse(){
-		return ellipse;
 	}
 }
