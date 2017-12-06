@@ -13,8 +13,11 @@ public class GEEllipse extends GEShape{
 	}
 	
 	public void setCoordinate(Point currentP){
-		Ellipse2D ellipse = (Ellipse2D)myshape;
+		Ellipse2D ellipse = (Ellipse2D)myShape;
 		ellipse.setFrame(startP.x, startP.y, currentP.x - startP.x, currentP.y - startP.y);
+		if(anchorList != null){
+			anchorList.setPosition(myShape.getBounds());
+		}
 	}
 	
 	@Override

@@ -10,19 +10,21 @@ public class GEPolygon extends GEShape {
 	
 	@Override
 	public void initDraw(Point startP) {
-		((Polygon)myshape).addPoint(startP.x, startP.y);
+		((Polygon)myShape).addPoint(startP.x, startP.y);
 	}
 	
 	public void continueDrawing(Point currentP){	
-		((Polygon)myshape).addPoint(currentP.x,currentP.y);
+		((Polygon)myShape).addPoint(currentP.x,currentP.y);
 	}
 
 	@Override
 	public void setCoordinate(Point currentP) {
-		Polygon tempPolygon = (Polygon)myshape;
+		Polygon tempPolygon = (Polygon)myShape;
 		tempPolygon.xpoints[tempPolygon.npoints - 1] = currentP.x;
 		tempPolygon.ypoints[tempPolygon.npoints - 1] = currentP.y;
-
+		if(anchorList != null){
+			anchorList.setPosition(myShape.getBounds());
+		}
 	}
 
 	@Override

@@ -32,4 +32,12 @@ public class GEConstants {
 	public static final Color BACKGROUND_COLOR = Color.white;
 	public static enum EState {Idle, TwoPointsDrawing, NPointsDrawing}
 	
+	//GEAnchorList
+	public static final int ANCHOR_W = 6;
+	public static final int ANCHOR_H = 6;
+	public static final int RR_OFFSET = 30;
+	public static final Color ANCHOR_LINECOLOR = Color.black;
+	public static final Color ANCHOR_FILLCOLOR = Color.white;
+	public static enum EAnchorTypes { NW, NN, NE, WW, EE, SW, SS, SE, RR, NONE}
+	
 }

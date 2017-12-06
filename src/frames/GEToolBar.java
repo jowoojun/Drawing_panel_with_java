@@ -57,6 +57,8 @@ public class GEToolBar extends JToolBar {
 				drawingPanel.setCurrentShape(new GELine());
 			else if(rbutton.getActionCommand().equals(EToolBarButtons.Polygon.name()))
 				drawingPanel.setCurrentShape(new GEPolygon());
+			else if(rbutton.getActionCommand().equals(EToolBarButtons.Select.name()))
+				drawingPanel.setCurrentShape(null);
 		}
 	}
 }

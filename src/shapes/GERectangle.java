@@ -13,8 +13,11 @@ public class GERectangle extends GEShape{
 	}
 	
 	public void setCoordinate(Point currentP){
-		Rectangle rectangle = (Rectangle)myshape;
+		Rectangle rectangle = (Rectangle)myShape;
 		rectangle.setBounds(startP.x, startP.y, currentP.x - startP.x, currentP.y - startP.y);
+		if(anchorList != null){
+			anchorList.setPosition(myShape.getBounds());
+		}
 	}
 	
 	@Override
