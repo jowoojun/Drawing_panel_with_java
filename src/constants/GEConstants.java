@@ -19,7 +19,7 @@ public class GEConstants {
 	public static enum EEditMenuItems {Undo, Redo, Remove, Cut, Copy,
 		Paste, Group, Ungroup}
 	public static enum EColorMenuItems {SetLineColor, ClearLineColor, 
-		SetFillColor, ClearFileColor}
+		SetFillColor, ClearFillColor}
 	
 	//GEToolBar
 	public static final String TITLE_TOOLBAR = "Shape Tools";
@@ -28,9 +28,12 @@ public class GEConstants {
 	public static final String TOOLBAR_BTN = ".gif";
 	public static final String TOOLBAR_BTN_SLT = "SLT.gif";
 	
-	public static final Color FOREGROUND_COLOR = Color.BLACK;
-	public static final Color BACKGROUND_COLOR = Color.white;
-	public static enum EState {Idle, TwoPointsDrawing, NPointsDrawing}
+	// GEDraingPanel
+	public static final Color FOREGROUND_COLOR = Color.BLACK; 
+	public static final Color BACKGROUND_COLOR = Color.white; 
+	public static enum EState {Idle, TwoPointsDrawing, NPointsDrawing} 
+	public static final Color COLOR_LINE_DEFAULT = Color.black;
+	public static final Color COLOR_FILL_DEFAULT = Color.white;
 	
 	//GEAnchorList
 	public static final int ANCHOR_W = 6;
@@ -39,5 +42,14 @@ public class GEConstants {
 	public static final Color ANCHOR_LINECOLOR = Color.black;
 	public static final Color ANCHOR_FILLCOLOR = Color.white;
 	public static enum EAnchorTypes { NW, NN, NE, WW, EE, SW, SS, SE, RR, NONE}
+	
+	//GEMenuColor
+	public static final String FILL_COOR_TITLE = "Select fill color";
+	public static final String LINE_COLOR_TITLE = "Select line color";
+
+	// GETransformer
+	public static final int DEFAULT_DASH_OFFSET = 4;
+	public static final int DEFAULT_DASHEDLINE_WIDTH = 1;
+		
 	
 }

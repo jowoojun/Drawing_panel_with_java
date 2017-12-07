@@ -8,34 +8,32 @@ import constants.GEConstants;
 import menus.GEMenuBar;
 
 public class GEMainFrame extends JFrame {
-	
-	private GEDrawingPanel drawingpanel;
+	private GEDrawingPanel drawingPanel;
 	private GEMenuBar menuBar;
 	private GEToolBar toolBar;
 	
-	private GEMainFrame(String title){
-		super(title);
+	private GEMainFrame(String label){
+		super(label);
 		
-		drawingpanel = new GEDrawingPanel();
-		add(drawingpanel);
+		drawingPanel = new GEDrawingPanel();
+		add(drawingPanel);
 		menuBar = new GEMenuBar();
 		this.setJMenuBar(menuBar);
 		toolBar = new GEToolBar(GEConstants.TITLE_TOOLBAR);
-		this.add(BorderLayout.NORTH, toolBar);
+		add(BorderLayout.NORTH, toolBar);
 	}
 	
-	private static GEMainFrame uniqueMainFrame = 
-			new GEMainFrame(GEConstants.TITLE_MAINFRAME);
-	
+	private static GEMainFrame uniqueFrame = new GEMainFrame(GEConstants.TITLE_MAINFRAME);
 	
 	public static GEMainFrame getInstance(){
-		return uniqueMainFrame;
+		return uniqueFrame;
 	}
 	
 	public void init(){
-		toolBar.init(drawingpanel);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(GEConstants.WIDTH_MAINFRAME,GEConstants.HEIGHT_MAINFRAME);
+		toolBar.init(drawingPanel);
+		menuBar.init(drawingPanel);
 		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(GEConstants.WIDTH_MAINFRAME, GEConstants.HEIGHT_MAINFRAME);
 	}
 }

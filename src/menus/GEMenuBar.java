@@ -1,10 +1,9 @@
 package menus;
 
-import java.io.File;
-
 import javax.swing.JMenuBar;
 
 import constants.GEConstants;
+import frames.GEDrawingPanel;
 
 public class GEMenuBar extends JMenuBar {
 	private GEMenuFile fileMenu;
@@ -12,11 +11,17 @@ public class GEMenuBar extends JMenuBar {
 	private GEMenuColor colorMenu;
 	
 	public GEMenuBar(){
+		super();
+		
 		fileMenu = new GEMenuFile(GEConstants.TITLE_FILEMENU);
-		this.add(fileMenu);
+		add(fileMenu);
 		editMenu = new GEMenuEdit(GEConstants.TITLE_EDITMENU);
-		this.add(editMenu);
+		add(editMenu);
 		colorMenu = new GEMenuColor(GEConstants.TITLE_COLORMENU);
-		this.add(colorMenu);
+		add(colorMenu);
+	}
+	
+	public void init(GEDrawingPanel drawingPanel){
+		colorMenu.init(drawingPanel);
 	}
 }
