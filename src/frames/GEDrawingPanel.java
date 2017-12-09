@@ -15,6 +15,7 @@ import Shapes.GEShape;
 import constants.GEConstants;
 import constants.GEConstants.EState;
 import transformer.GEDrawer;
+import transformer.GEMover;
 import transformer.GETransformer;
 
 public class GEDrawingPanel extends JPanel {
@@ -74,8 +75,8 @@ public class GEDrawingPanel extends JPanel {
 		currentShape = currentShape.clone();
 		currentShape.setFillColor(fillColor);
 		currentShape.setLineColor(lineColor);
-		transformer = new GEDrawer(currentShape);
-		transformer.init(startP);
+		// transformer = new GEDrawer(currentShape);
+		// transformer.init(startP);
 	}
 	
 	public void continuDraw(Point currentP){
@@ -88,7 +89,8 @@ public class GEDrawingPanel extends JPanel {
 	}
 	
 	private GEShape onShape(Point p){
-		for(GEShape shape : shapeList){
+		for(int i = shapeList.size() - 1; i >= 0; i--){
+			GEShape shape = shapeList.get(i);
 			if(shape.onShape(p)){
 				return shape; 
 			}
@@ -101,6 +103,7 @@ public class GEDrawingPanel extends JPanel {
 			shape.setSelected(false);
 		}
 	}
+	
 	private class MouseHandler extends MouseAdapter{
 		
 		@Override
@@ -108,6 +111,8 @@ public class GEDrawingPanel extends JPanel {
 			if(currentState == EState.Idle){
 				if(currentShape != null){
 					initDraw(e.getPoint());
+					transformer = new GEDrawer(currentShape);
+					transformer.init(e.getPoint());
 					if(currentShape instanceof GEPolygon)
 						currentState = EState.NPointsDrawing;
 					else
@@ -117,6 +122,9 @@ public class GEDrawingPanel extends JPanel {
 					clearSelectedShape();
 					if(selectedShape != null){
 						selectedShape.setSelected(true);
+						transformer = new GEMover(selectedShape);
+						transformer.init(e.getPoint());
+						currentState = EState.Moving;
 					}
 				}
 			}
@@ -126,24 +134,27 @@ public class GEDrawingPanel extends JPanel {
 		public void mouseMoved(MouseEvent e) {
 			if(currentState == EState.NPointsDrawing)
 				// animateDraw(e.getPoint());
-				transformer.tranformer((Graphics2D)getGraphics(), e.getPoint());
+				transformer.transfomer((Graphics2D)getGraphics(), e.getPoint());
 		}
 		
 		@Override
 		public void mouseDragged(MouseEvent e){
-			if(currentState == EState.TwoPointsDrawing)
+			if(currentState != EState.Idle){
 				//animateDraw(e.getPoint());
-				transformer.tranformer((Graphics2D)getGraphics(), e.getPoint());
+				transformer.transfomer((Graphics2D)getGraphics(), e.getPoint());
+				
+			}
 		}		
 		
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			if(currentState == EState.TwoPointsDrawing){
 				finishDraw();
-				currentState = EState.Idle;
+				
 			}else if(currentState == EState.NPointsDrawing){
 				return;
 			}
+			currentState = EState.Idle;
 			repaint();
 		}
 		

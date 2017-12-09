@@ -18,7 +18,7 @@ public class GEDrawer extends GETransformer {
 	}
 
 	@Override
-	public void tranformer(Graphics2D g2d, Point p) {
+	public void transfomer(Graphics2D g2d, Point p) {
 		g2d.setXORMode(g2d.getBackground());
 		g2d.setStroke(dashedLineStroke);
 		shape.draw(g2d);
