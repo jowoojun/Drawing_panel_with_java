@@ -18,5 +18,5 @@ public abstract class GETransformer {
 	}
 	
 	abstract public void init(Point p);
-	abstract public void transfomer(Graphics2D g2d, Point p);
+	abstract public void transformer(Graphics2D g2d, Point p);
 }

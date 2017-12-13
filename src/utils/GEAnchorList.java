@@ -63,4 +63,10 @@ public class GEAnchorList {
 			g2D.draw(ellipse);
 		}
 	}
+	
+	public ArrayList<Ellipse2D.Double> getAnchors() {
+		return anchors;
+	}
+	
+	
 }

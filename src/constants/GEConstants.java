@@ -31,7 +31,7 @@ public class GEConstants {
 	// GEDraingPanel
 	public static final Color FOREGROUND_COLOR = Color.BLACK; 
 	public static final Color BACKGROUND_COLOR = Color.white; 
-	public static enum EState {Idle, TwoPointsDrawing, NPointsDrawing, Moving} 
+	public static enum EState {Idle, TwoPointsDrawing, NPointsDrawing, Moving, Resizing}
 	public static final Color COLOR_LINE_DEFAULT = Color.black;
 	public static final Color COLOR_FILL_DEFAULT = Color.white;
 	

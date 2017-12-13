@@ -21,7 +21,7 @@ public class GEMover extends GETransformer {
 	}
 
 	@Override
-	public void transfomer(Graphics2D g2d, Point p) {
+	public void transformer(Graphics2D g2d, Point p) {
 		Point tempP = new Point(p.x - previousP.x, p.y - previousP.y);
 		g2d.setXORMode(g2d.getBackground());
 		g2d.setStroke(dashedLineStroke);

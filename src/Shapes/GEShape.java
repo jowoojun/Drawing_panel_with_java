@@ -6,6 +6,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 
 import constants.GEConstants.EAnchorTypes;
 import utils.GEAnchorList;
@@ -17,7 +18,7 @@ public abstract class GEShape {
 	protected GEAnchorList anchorList;
 	protected EAnchorTypes selectedAnchor;
 	protected Color lineColor, fillColor;
-	protected AffineTransform affineTransform; //
+	protected AffineTransform affineTransform;
 	
 	public GEShape(Shape myShape){
 		this.myShape = myShape;
@@ -25,7 +26,6 @@ public abstract class GEShape {
 		this.anchorList = null;
 		affineTransform = new AffineTransform();
 	}
-	
 	public void setFillColor(Color fillColor){
 		this.fillColor = fillColor;
 	}
@@ -70,10 +70,48 @@ public abstract class GEShape {
 		return myShape.intersects(new Rectangle(p.x, p.y, 2, 2));
 	}
 	
+	public EAnchorTypes onAnchor(Point p){
+		selectedAnchor = anchorList.onAnchors(p);
+		return selectedAnchor;
+	}
+	
+	public boolean isSelected() {
+		return selected;
+	}
+	
+	public GEAnchorList getAnchorList() {
+		return anchorList;
+	}
+	
+	public EAnchorTypes getSelectedAnchor() {
+		return selectedAnchor;
+	}
+	
+	public Rectangle getBound(){
+		return myShape.getBounds();
+	}
+	
+	
+	public void resizeCoordinate(Point2D resizeFactor){
+		affineTransform.setToScale(resizeFactor.getX(), resizeFactor.getY());
+		myShape = affineTransform.createTransformedShape(myShape);
+	}
+	
 	public void moveCoordinate(Point moveP){
 		affineTransform.setToTranslation(moveP.x, moveP.y);
 		myShape = affineTransform.createTransformedShape(myShape);
 	}
+	
+	public void moveReverse(Point resizeAnchor){  
+		affineTransform.setToTranslation(-resizeAnchor.x, -resizeAnchor.y); 
+		myShape = affineTransform.createTransformedShape(myShape);
+	} 
+	
+	public void move(Point resizeAnchor){   
+		affineTransform.setToTranslation(resizeAnchor.x, resizeAnchor.y); 
+		myShape = affineTransform.createTransformedShape(myShape);
+	} 
+	
 	
 	abstract public void initDraw(Point startP);
 	abstract public void setCoordinate(Point currentP);
